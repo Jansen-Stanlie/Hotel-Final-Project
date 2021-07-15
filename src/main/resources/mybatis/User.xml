@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "User">
+    <insert id = "insert" parameterType = "com.Stans.model.User">
+        INSERT INTO user_travel (username,password) VALUES (#{username}, #{password});
+        <selectKey keyProperty = "id" resultType = "int" order = "AFTER">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+    <resultMap id = "login" type = "com.Stans.model.User">
+        <result property = "id" column = "id"/>
+        <result property = "username" column = "username"/>
+        <result property = "password" column = "password"/>
+    </resultMap>
+    <select id = "userlog" parameterType = "map" resultMap = "login">
+        SELECT * from user_travel where username = #{username} And password = #{password};
+    </select>
+    <select id = "userregis" parameterType = "String" resultMap = "login">
+        SELECT * from user_travel where username = #{username};
+    </select>
+    <resultMap id = "bookcheck" type = "com.Stans.model.Booking">
+        <result property = "username" column = "username"/>
+        <result property = "name" column = "nama_pemesan"/>
+        <result property = "Booking_id" column = "booking_id"/>
+        <result property = "payment_status" column = "status"/>
+        <result property = "Quantity" column = "quantity"/>
+        <result property = "hotel_name" column = "hotel_name"/>
+        <result property = "Room_type" column = "room_type"/>
+    </resultMap>
+    <select id = "check" parameterType = "String" resultMap = "bookcheck">
+        SELECT * from pemesanan WHERE username = #{username};
+    </select>
+    <update id = "resetPass" parameterType = "com.Stans.model.User">
+        UPDATE user_travel SET password = #{password} WHERE username = #{username};
+    </update>
+    <select id = "payment" parameterType = "String" resultMap = "bookcheck">
+        SELECT * from pemesanan WHERE username = #{username} AND booking_id = #{Booking Id};
+    </select>
+    <update id = "updatePayment" parameterType = "map">
+        UPDATE pemesanan SET status = #{status},tanggal_pembayaran = #{date} WHERE username = #{username};
+    </update>
+<!--    <delete id = "deleteAll" parameterType = "int">-->
+<!--        DELETE siswas.*,nilai.* FROM siswas INNER JOIN nilai ON siswas.Id_siswa = nilai.Id_nilai;-->
+<!--    </delete>-->
+
+    <update id = "updatePemesanan" parameterType = "map">
+        UPDATE pemesanan SET status = 'Canceled',tanggal_pembatalan = #{date} WHERE status = 'Pending' AND username = #{username};
+    </update>
+</mapper>

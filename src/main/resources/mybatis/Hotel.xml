@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "Hotel">
+    <update id = "insertUpdateRoom" parameterType = "com.Stans.model.Booking">
+        UPDATE room_availability INNER JOIN list_hotel ON list_hotel.hotel_id = room_availability.hotel_id
+        INNER JOIN room_price ON room_availability.hotel_id = room_price.hotel_id SET ${Room_type}_room = #{kamarBaru},room_date = #{booking_date}
+        WHERE list_hotel.nama_hotel = #{hotel_name};
+    </update>
+    <resultMap id = "avail" type = "com.Stans.model.Booking">
+        <result property = "kamar_kosong" column = "room"/>
+        <result property = "harga_kamar" column = "price"/>
+        <result property = "location" column = "location"/>
+    </resultMap>
+    <select id = "datakamar" parameterType = "map" resultMap = "avail">
+        SELECT list_hotel.location,room_availability.${room}_room AS room,room_price.${room}_price AS price FROM list_hotel
+        INNER JOIN room_availability ON list_hotel.hotel_id = room_availability.hotel_id
+        INNER JOIN room_price ON room_availability.hotel_id = room_price.hotel_id WHERE list_hotel.nama_hotel = #{hotel};
+</select>
+</mapper>
