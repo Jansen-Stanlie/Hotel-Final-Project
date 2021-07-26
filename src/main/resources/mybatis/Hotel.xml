@@ -1,0 +1,60 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "Hotel">
+    <update id = "insertUpdateRoom" parameterType = "com.model.Booking">
+        UPDATE room_availability INNER JOIN list_hotel ON list_hotel.hotel_id = room_availability.hotel_id
+        INNER JOIN room_price ON room_availability.hotel_id = room_price.hotel_id SET ${Room_type}_room = #{kamarBaru},room_date = #{today}
+        WHERE list_hotel.nama_hotel = #{hotel_name};
+    </update>
+    <resultMap id = "All" type = "com.model.Hotel">
+        <result property = "hotel_id" column = "hotel_id"/>
+        <result property = "hotel_name" column = "nama_hotel"/>
+        <result property = "suite_room" column = "suite_room"/>
+        <result property = "deluxe_room" column = "deluxe_room"/>
+        <result property = "standard_room" column = "standard_room"/>
+        <result property = "suite_price" column = "suite_price"/>
+        <result property = "deluxe_price" column = "deluxe_price"/>
+        <result property = "standard_price" column = "standard_price"/>
+        <result property = "price_update" column = "price_date"/>
+        <result property = "room_update" column = "room_date"/>
+        <result property = "location" column = "location"/>
+        <result property = "status" column = "status"/>
+        <result property = "rating" column = "ratings"/>
+    </resultMap>
+    <select id = "selectAll" resultMap = "All">
+        SELECT list_hotel.*,room_availability.*,room_price.* FROM list_hotel
+        INNER JOIN room_availability ON list_hotel.hotel_id = room_availability.hotel_id
+        INNER JOIN room_price ON room_availability.hotel_id = room_price.hotel_id;
+    </select>
+    <select id = "getByLocation" parameterType = "String" resultMap = "All">
+        SELECT list_hotel.*,room_availability.*,room_price.* FROM list_hotel
+        INNER JOIN room_availability ON list_hotel.hotel_id = room_availability.hotel_id
+        INNER JOIN room_price ON room_availability.hotel_id = room_price.hotel_id WHERE list_hotel.location = #{location};
+    </select>
+    <select id = "getByRatings" parameterType = "String" resultMap = "All">
+        SELECT list_hotel.*,room_availability.*,room_price.* FROM list_hotel
+        INNER JOIN room_availability ON list_hotel.hotel_id = room_availability.hotel_id
+        INNER JOIN room_price ON room_availability.hotel_id = room_price.hotel_id WHERE list_hotel.ratings = #{ratings};
+    </select>
+    <select id = "getByRoomType" parameterType = "map" resultMap = "All">
+        SELECT list_hotel.*,room_availability.${room}_room,room_price.${room}_price FROM list_hotel
+        INNER JOIN room_availability ON list_hotel.hotel_id = room_availability.hotel_id
+        INNER JOIN room_price ON room_availability.hotel_id = room_price.hotel_id WHERE list_hotel.location = #{location};
+    </select>
+    <resultMap id = "avail" type = "com.model.Booking">
+        <result property = "kamar_kosong" column = "room"/>
+        <result property = "harga_kamar" column = "price"/>
+        <result property = "location" column = "location"/>
+    </resultMap>
+    <select id = "datakamar" parameterType = "map" resultMap = "avail">
+        SELECT list_hotel.location,room_availability.${room}_room AS room,room_price.${room}_price AS price FROM list_hotel
+        INNER JOIN room_availability ON list_hotel.hotel_id = room_availability.hotel_id
+        INNER JOIN room_price ON room_availability.hotel_id = room_price.hotel_id WHERE list_hotel.nama_hotel = #{hotel};
+    </select>
+<!--    <delete id = "deleteById" parameterType = "int">-->
+<!--        DELETE siswas.*,nilai.* FROM siswas INNER JOIN nilai ON siswas.Id_siswa = nilai.Id_nilai WHERE Id_siswa = #{id};-->
+<!--    </delete>-->
+<!--    <delete id = "deleteAll" parameterType = "int">-->
+<!--        DELETE siswas.*,nilai.* FROM siswas INNER JOIN nilai ON siswas.Id_siswa = nilai.Id_nilai;-->
+<!--    </delete>-->
+</mapper>
