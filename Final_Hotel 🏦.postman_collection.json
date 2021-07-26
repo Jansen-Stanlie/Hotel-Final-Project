@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "b2c558d6-94f1-4974-a739-0ae859e4b2d0",
+		"name": "Final_Hotel 🏦",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Booking Hotel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJUcmF2ZWxva2EiLCJzdWIiOiJMb3JkQ2FoeWFudG9AZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNjAyNDYwOCwiZXhwIjoxNjI2MDI1MjA4fQ.dSywfY3tH4xxjjvIkFHn8AiF2xrdFWopfmaxVurl2Fbc5RrjkI7pgTf9cnUhQGwdwGV_aMjSnjlenNHIYjQ4XQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Booking\":{\r\n        \"name\":\"Lord Eko\",\r\n        \"hotel name\":\"JW Marriot\",\r\n        \"Room\":{\r\n                \"Type\":\"suite\",\r\n                \"Quantity\":5,\r\n                \"Nights\": 15,\r\n                \"CheckIn Date\": \"2021-07-10\"\r\n        }\r\n        \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/User/hotel/Booking",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"hotel",
+						"Booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ALL Hotel Room",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJUcmF2ZWxva2EiLCJzdWIiOiJMb3JkQ2FoeWFudG9AZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTg5ODk1NywiZXhwIjoxNjI1ODk5NTU3fQ.obDO-CnZR2KmrUYjCR8vT3R6doB52yCkHd4UWXv74yy7035FiMP54tnXAhLzwkiLjsUy0ITgeXHgow0oDRedUg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8083/User/hotel/All",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"hotel",
+						"All"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Jansen24@gmail.com\",\r\n    \"password\":\"Jo@han_72\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/User/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"LordCahyanto@gmail.com\",\r\n    \"password\":\"Lord90_as\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/User/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hotel by Ratings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJUcmF2ZWxva2EiLCJzdWIiOiJMb3JkQ2FoeWFudG9AZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTg5ODk1NywiZXhwIjoxNjI1ODk5NTU3fQ.obDO-CnZR2KmrUYjCR8vT3R6doB52yCkHd4UWXv74yy7035FiMP54tnXAhLzwkiLjsUy0ITgeXHgow0oDRedUg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/User/hotel/Ratings/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"hotel",
+						"Ratings",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hotel by location",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJUcmF2ZWxva2EiLCJzdWIiOiJMb3JkQ2FoeWFudG9AZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTg5ODk1NywiZXhwIjoxNjI1ODk5NTU3fQ.obDO-CnZR2KmrUYjCR8vT3R6doB52yCkHd4UWXv74yy7035FiMP54tnXAhLzwkiLjsUy0ITgeXHgow0oDRedUg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8083/User/hotel/jakarta",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"hotel",
+						"jakarta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forgetPass request token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Jansen24@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/User/forgetPass",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"forgetPass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJUcmF2ZWxva2EiLCJzdWIiOiJKYW5zZW4yNEBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjI1ODc1NjA2LCJleHAiOjE2MjU4NzYyMDZ9.m_pyVz_N3L9Zt8HospFvRkS3SN9c9n05Je65yXNke2rYNw3JBZ2cWasILMp0nvJ8u4rpAkxkUySzZOq0DA1htg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Jansen24@gsmail.com\",\r\n    \"password\":\"Jo@han_72\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/User/Resetpass",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"Resetpass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJUcmF2ZWxva2EiLCJzdWIiOiJMb3JkQ2FoeWFudG9AZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTg5ODk1NywiZXhwIjoxNjI1ODk5NTU3fQ.obDO-CnZR2KmrUYjCR8vT3R6doB52yCkHd4UWXv74yy7035FiMP54tnXAhLzwkiLjsUy0ITgeXHgow0oDRedUg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"booking_id\":\"elZSR4xC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/User/hotel/Payment",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"User",
+						"hotel",
+						"Payment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
